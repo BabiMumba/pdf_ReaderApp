@@ -1,10 +1,12 @@
 package com.babitech.pdfreader;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.os.Environment;
 import android.widget.Toast;
 
 import com.karumi.dexter.Dexter;
@@ -69,8 +71,14 @@ public class MainActivity extends AppCompatActivity {
         return arrayList;
 
     }
-
     private void displaypdf() {
+        recyclerView = findViewById(R.id.my_recyclerview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        pdfList = new ArrayList<>();
+        pdfList.addAll( findpdf(Environment.getExternalStorageDirectory()));
+        pdfAdapter = new pdfAdapter(this,pdfList);
+        recyclerView.setAdapter(pdfAdapter);
 
     }
 }

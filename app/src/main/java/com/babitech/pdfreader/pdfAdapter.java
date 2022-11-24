@@ -15,6 +15,11 @@ public class pdfAdapter extends RecyclerView.Adapter<pdf_viewholder> {
     private Context context;
     private List<File> pdffiles;
 
+    public pdfAdapter(Context context, List<File> pdffiles) {
+        this.context = context;
+        this.pdffiles = pdffiles;
+    }
+
     @NonNull
     @Override
     public pdf_viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
