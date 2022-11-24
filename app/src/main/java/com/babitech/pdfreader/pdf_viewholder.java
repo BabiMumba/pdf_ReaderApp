@@ -14,5 +14,6 @@ public class pdf_viewholder extends RecyclerView.ViewHolder {
         super(itemview);
         tvName = itemview.findViewById(R.id.pdf_name);
         container = itemview.findViewById(R.id.container);
+
     }
 }
