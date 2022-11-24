@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements Pdf_listener_file
         return arrayList;
 
     }
+
     private void displaypdf() {
         recyclerView = findViewById(R.id.my_recyclerview);
         recyclerView.setHasFixedSize(true);

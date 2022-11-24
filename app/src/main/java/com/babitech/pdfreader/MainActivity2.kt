@@ -18,13 +18,15 @@ import android.os.Environment
 import android.content.Intent
 import com.babitech.pdfreader.DocumentActivity
 import com.karumi.dexter.listener.PermissionRequest
+import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import java.util.ArrayList
 
-class MainActivity2 : AppCompatActivity(), Pdf_listener_file {
-    private var pdfAdapter: pdfAdapter? = null
-    private var pdfList: MutableList<File>? = null
-    private var recyclerView: RecyclerView? = null
+class MainActivity2 : AppCompatActivity(),  Pdf_listener_file {
+    lateinit var pdfAdapter: pdfAdapter2
+    private lateinit var pdfList: MutableList<File>
+    private lateinit var recyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -73,17 +75,18 @@ class MainActivity2 : AppCompatActivity(), Pdf_listener_file {
 
     private fun displaypdf() {
         recyclerView = findViewById(R.id.my_recyclerview)
+
         recyclerView.setHasFixedSize(true)
-        recyclerView.setLayoutManager(GridLayoutManager(this, 3))
+        recyclerView.layoutManager = GridLayoutManager(this, 3)
         pdfList = ArrayList()
         pdfList.addAll(findpdf(Environment.getExternalStorageDirectory()))
-        pdfAdapter = pdfAdapter(this, pdfList, this)
-        recyclerView.setAdapter(pdfAdapter)
+        pdfAdapter = pdfAdapter2(this, pdfList, this)
+        my_recyclerview.adapter = pdfAdapter
     }
 
     override fun onSelected(file: File) {
         startActivity(
-            Intent(this, DocumentActivity::class.java)
+            Intent(this, DocumentActivity2::class.java)
                 .putExtra("path", file.absolutePath)
         )
     }
