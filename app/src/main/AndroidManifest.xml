@@ -29,7 +29,7 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".alarm.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,7 +38,8 @@
             </intent-filter>
         </activity>
         <receiver
-            android:name=".MainActivity$bootReceiver"
+
+            android:name=".alarm.MainActivity$bootReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -47,7 +48,7 @@
         </receiver>
 
         <receiver
-            android:name=".MainActivity$receiveAlarmManager"
+            android:name=".alarm.MainActivity$receiveAlarmManager"
             android:exported="false" />
     </application>
 
