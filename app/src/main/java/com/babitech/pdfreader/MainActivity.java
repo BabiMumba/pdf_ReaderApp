@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements Pdf_listener_file
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         pdfList = new ArrayList<>();
-        pdfList.addAll( findpdf(Environment.getExternalStorageDirectory()));
+        pdfList.addAll( findpdf(new File(Environment.getExternalStorageDirectory() + "/"+Environment.DIRECTORY_DOWNLOADS+"/")));
         pdfAdapter = new pdfAdapter(this,pdfList,this);
         recyclerView.setAdapter(pdfAdapter);
 

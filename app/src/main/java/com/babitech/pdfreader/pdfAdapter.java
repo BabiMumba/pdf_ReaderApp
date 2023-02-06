@@ -1,5 +1,6 @@
 package com.babitech.pdfreader;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +32,7 @@ public class pdfAdapter extends RecyclerView.Adapter<pdf_viewholder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull pdf_viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull pdf_viewholder holder, @SuppressLint("RecyclerView") int position) {
         holder.tvName.setText(pdffiles.get(position).getName());
         holder.container.setSelected(true);
         holder.container.setOnClickListener(new View.OnClickListener() {

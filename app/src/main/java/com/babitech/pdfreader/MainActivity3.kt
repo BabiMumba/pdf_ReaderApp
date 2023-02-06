@@ -16,17 +16,16 @@ import com.karumi.dexter.PermissionToken
 import androidx.recyclerview.widget.GridLayoutManager
 import android.os.Environment
 import android.content.Intent
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.babitech.pdfreader.DocumentActivity
 import com.karumi.dexter.listener.PermissionRequest
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import java.util.ArrayList
 
-class MainActivity2 : AppCompatActivity(),  Pdf_listener_file {
-    lateinit var pdfAdapter: pdfAdapter2
-    private lateinit var pdfList: MutableList<File>
-    private lateinit var recyclerView: RecyclerView
-
+class MainActivity3 : AppCompatActivity(), Pdf_listener_file {
+    private var pdfAdapter: pdfAdapter? = null
+    private var pdfList: MutableList<File>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,7 +33,7 @@ class MainActivity2 : AppCompatActivity(),  Pdf_listener_file {
     }
 
     private fun runtimePermissions() {
-        Dexter.withContext(this@MainActivity2)
+        Dexter.withContext(this@MainActivity3)
             .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
@@ -43,7 +42,7 @@ class MainActivity2 : AppCompatActivity(),  Pdf_listener_file {
 
                 override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse) {
                     Toast.makeText(
-                        this@MainActivity2,
+                        this@MainActivity3,
                         "la permission est necessaire pour continuer",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -74,20 +73,24 @@ class MainActivity2 : AppCompatActivity(),  Pdf_listener_file {
     }
 
     private fun displaypdf() {
-        recyclerView = findViewById(R.id.my_recyclerview)
-
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = GridLayoutManager(this, 3)
+        my_recyclerview.setHasFixedSize(true)
+        my_recyclerview.layoutManager = LinearLayoutManager(this, )
         pdfList = ArrayList()
-        pdfList.addAll( findpdf(Environment.getExternalStorageDirectory()))
-
-        pdfAdapter = pdfAdapter2(this, pdfList, this)
+        (pdfList as ArrayList<File>).addAll(
+            findpdf(
+                File(
+                    Environment.getExternalStorageDirectory()
+                        .toString() + "/" + Environment.DIRECTORY_DOWNLOADS + "/"
+                )
+            )
+        )
+        pdfAdapter = pdfAdapter(this, pdfList, this)
         my_recyclerview.adapter = pdfAdapter
     }
 
     override fun onSelected(file: File) {
         startActivity(
-            Intent(this, DocumentActivity2::class.java)
+            Intent(this, DocumentActivity::class.java)
                 .putExtra("path", file.absolutePath)
         )
     }

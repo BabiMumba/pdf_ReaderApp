@@ -15,7 +15,6 @@ class DocumentActivity2 : AppCompatActivity() {
         val pdfView = findViewById<PDFView>(R.id.pdfView)
 
         filepath = intent.getStringExtra("path").toString()
-
         val file = File(filepath)
         val path = Uri.fromFile(file)
         pdfView.fromUri(path).load()
