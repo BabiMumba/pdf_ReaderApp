@@ -18,8 +18,9 @@ class RecyclerAdapter(private val context: Context, private val listRecyclerItem
         init {
             name = itemView.findViewById<View>(R.id.name) as TextView
             date = itemView.findViewById<View>(R.id.date) as TextView
+            val nams = name.text.toString()
           itemView.setOnClickListener {
-              Toast.makeText(context, "$name", Toast.LENGTH_SHORT).show()
+              Toast.makeText(context, "$nams", Toast.LENGTH_SHORT).show()
           }
         }
         
