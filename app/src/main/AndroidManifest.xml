@@ -19,9 +19,6 @@
         android:theme="@style/Theme.PdfReader"
         tools:targetApi="31">
         <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
-        <activity
             android:name=".DocumentActivity"
             android:exported="false" />
         <activity
@@ -31,11 +28,10 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".alarm.MainActivity"
+            android:name=".json.kt.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

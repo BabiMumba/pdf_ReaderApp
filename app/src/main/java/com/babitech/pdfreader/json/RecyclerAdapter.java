@@ -59,10 +59,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         switch (viewType) {
             case TYPE:
             default:
-
                 ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
                 Holidays holidays = (Holidays) listRecyclerItem.get(i);
-
                 itemViewHolder.name.setText(holidays.getName());
                 itemViewHolder.date.setText(holidays.getDate());
         }

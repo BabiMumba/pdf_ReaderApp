@@ -47,10 +47,7 @@ public  class HomeActivity extends AppCompatActivity {
         // specify an adapter (see also next example)
         mAdapter = new RecyclerAdapter(this, viewItems);
         mRecyclerView.setAdapter(mAdapter);
-
         addItemsFromJSON();
-
-
     }
 
     private void addItemsFromJSON() {
@@ -61,12 +58,9 @@ public  class HomeActivity extends AppCompatActivity {
             JSONArray jsonArray = new JSONArray(jsonDataString);
 
             for (int i=0; i<jsonArray.length(); ++i) {
-
                 JSONObject itemObj = jsonArray.getJSONObject(i);
-
                 String name = itemObj.getString("name");
                 String date = itemObj.getString("date");
-
                 Holidays holidays = new Holidays(name, date);
                 viewItems.add(holidays);
             }
