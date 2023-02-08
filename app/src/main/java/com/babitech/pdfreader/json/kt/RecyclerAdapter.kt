@@ -7,6 +7,7 @@ import com.babitech.pdfreader.R
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 
 class RecyclerAdapter(private val context: Context, private val listRecyclerItem: List<Any>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -17,7 +18,11 @@ class RecyclerAdapter(private val context: Context, private val listRecyclerItem
         init {
             name = itemView.findViewById<View>(R.id.name) as TextView
             date = itemView.findViewById<View>(R.id.date) as TextView
+          itemView.setOnClickListener {
+              Toast.makeText(context, "$name", Toast.LENGTH_SHORT).show()
+          }
         }
+        
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): RecyclerView.ViewHolder {
