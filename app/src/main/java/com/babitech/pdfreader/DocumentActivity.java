@@ -20,6 +20,7 @@ public class DocumentActivity extends AppCompatActivity {
         PDFView pdfView = findViewById(R.id.pdfView);
 
         filepath = getIntent().getStringExtra("path");
+
         File file = new File(filepath);
         Uri path = Uri.fromFile(file);
         pdfView.fromUri(path).load();

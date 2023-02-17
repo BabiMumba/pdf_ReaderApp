@@ -1,5 +1,6 @@
 package com.babitech.pdfreader.new_reader;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.babitech.pdfreader.DocumentActivity;
 import com.babitech.pdfreader.R;
 
 import java.io.File;
@@ -42,8 +44,12 @@ public class Main_Liste extends AppCompatActivity {
             File tt = new File(root + "/" + name);
             assert files != null;
             if (tt.isFile()) {
-
-                Toast.makeText(getApplicationContext(), "File " + name + " clicked", Toast.LENGTH_SHORT).show();
+                if (tt.getName().endsWith(".pdf")){
+                    startActivity(new Intent(this, DocumentActivity.class)
+                            .putExtra("path",tt.getAbsolutePath())
+                    );
+                }
+              //  Toast.makeText(getApplicationContext(), "chemin " + tt.getAbsolutePath() + " clicked", Toast.LENGTH_SHORT).show();
 
             } else if (tt.isDirectory())
                 Toast.makeText(getApplicationContext(), "Folder " + name + " clicked", Toast.LENGTH_SHORT).show();
