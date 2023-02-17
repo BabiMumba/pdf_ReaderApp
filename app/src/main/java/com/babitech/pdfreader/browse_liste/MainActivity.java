@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
     //Define a model for files and folders
     static class Model {
-
         String name, size, perm, date;
         Drawable icon;
 
@@ -288,18 +287,22 @@ public class MainActivity extends AppCompatActivity {
                     if (file.canExecute() || !file.canExecute()) {
                         perm = perm + "-";
                     }
-                /*
-                if (file.getName().endsWith(".mp3")) {
+
+                if (file.getName().endsWith(".pdf")) {
                     //This will change icon to MP3 file icon. You need to create and move an icon called mp3 to the drawable folder.
-                    drawable1 = getResources().getDrawable(R.drawable.mp3);
-                } else if (file.getName().endsWith(".mp4")) {
-                    drawable1 = getResources().getDrawable(R.drawable.mp4);
-                }
-                 */
-                    drawable1 = getResources().getDrawable(R.drawable.afile);
+                    drawable1 = getResources().getDrawable(R.drawable.pdf_file);
                     Model content1 = new Model(theFile, longByte(Integer.parseInt(size)),
                             perm, dateFormatted, drawable1);
                     adapter.add(content1);
+                } else if (file.getName().endsWith(".mp4")) {
+                    drawable1 = getResources().getDrawable(R.drawable.ic_baseline_music_note_24);
+                    Model content1 = new Model(theFile, longByte(Integer.parseInt(size)),
+                            perm, dateFormatted, drawable1);
+                    adapter.add(content1);
+                }
+
+                   // drawable1 = getResources().getDrawable(R.drawable.afile);
+
 
                 }
             }
