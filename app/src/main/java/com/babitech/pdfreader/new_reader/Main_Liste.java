@@ -37,17 +37,16 @@ public class Main_Liste extends AppCompatActivity {
         Collections.sort(l);
         listView.setAdapter(directoryList);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String name = (String) listView.getItemAtPosition(position);
-                File tt = new File(root + "/" + name);
-                assert files != null;
-                if (tt.isFile()) {
-                    Toast.makeText(getApplicationContext(), "File " + name + " clicked", Toast.LENGTH_SHORT).show();
-                } else if (tt.isDirectory())
-                    Toast.makeText(getApplicationContext(), "Folder " + name + " clicked", Toast.LENGTH_SHORT).show();
-            }
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            String name = (String) listView.getItemAtPosition(position);
+            File tt = new File(root + "/" + name);
+            assert files != null;
+            if (tt.isFile()) {
+
+                Toast.makeText(getApplicationContext(), "File " + name + " clicked", Toast.LENGTH_SHORT).show();
+
+            } else if (tt.isDirectory())
+                Toast.makeText(getApplicationContext(), "Folder " + name + " clicked", Toast.LENGTH_SHORT).show();
         });
     }
 }

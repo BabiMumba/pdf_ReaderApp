@@ -28,7 +28,7 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".json.kt.HomeActivity"
+            android:name=".new_reader.Main_Liste"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
