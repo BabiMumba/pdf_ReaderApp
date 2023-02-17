@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="The file or folder will be created in Download folder"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/fileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter File name" />
+
+    <EditText
+        android:id="@+id/folderName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Folder name" />
+
+    <Button
+        android:id="@+id/createFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Create File" />
+
+    <Button
+        android:id="@+id/createFolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Folder" />
+
+</LinearLayout>
+
