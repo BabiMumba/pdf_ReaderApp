@@ -32,6 +32,7 @@ public final class MainActivity extends AppCompatActivity {
         two = findViewById(R.id.folderName);
         createFile = findViewById(R.id.createFile);
         createFolder = findViewById(R.id.createFolder);
+
         createFile.setOnClickListener(v -> {
             if (one.getText().toString().isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Please enter a file name", Toast.LENGTH_SHORT).show();
