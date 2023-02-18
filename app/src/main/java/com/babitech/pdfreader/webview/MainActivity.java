@@ -47,7 +47,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     WebView webView;
-    private String webUrl = "https://www.esisalama.com/assets/upload/horaire/pdf/HORAIRE%20L2_A.pdf";
+    private String webUrl = "https://zestedesavoir.com/tutoriels/pdf/1140/communication-entre-android-et-php-mysql.pdf";
     ProgressBar progressBarWeb;
     ProgressDialog progressDialog;
     RelativeLayout relativeLayout;
@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
             webView.getSettings().setJavaScriptEnabled(true);
             webView.getSettings().setLoadWithOverviewMode(true);
             webView.getSettings().setUseWideViewPort(true);
+            webView.getSettings().setSupportZoom(true);
+            webView.getSettings().setBuiltInZoomControls(true);
             webView.getSettings().setDomStorageEnabled(true);
             webView.getSettings().setLoadsImagesAutomatically(true);
 
