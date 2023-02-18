@@ -21,8 +21,8 @@ import java.util.List;
 
 public class Main_Liste extends AppCompatActivity {
 
-    //String root = (Environment.getExternalStorageDirectory().getPath());
-    String root = Environment.getExternalStorageDirectory().toString() + "/Download/";
+    String root = (Environment.getExternalStorageDirectory().getPath());
+   // String root = Environment.getExternalStorageDirectory().toString() + "/Download/";
     File directory = new File(root);
     String[] values = directory.list();
     File[] files = directory.listFiles();
@@ -46,13 +46,16 @@ public class Main_Liste extends AppCompatActivity {
             File tt = new File(root + "/" + name);
             assert files != null;
             if (tt.isFile()) {
-                if (tt.getName().endsWith(".pdf")){
+                /*
+                  if (tt.getName().endsWith(".pdf")){
                     startActivity(new Intent(this, DocumentActivity.class)
                             .putExtra("path",tt.getAbsolutePath())
                     );
                 }else {
                     Toast.makeText(getApplicationContext(), "chemin " + tt.getAbsolutePath() + " clicked", Toast.LENGTH_SHORT).show();
                 }
+                 */
+                Toast.makeText(getApplicationContext(), "chemin " + name + " clicked", Toast.LENGTH_SHORT).show();
               //
 
             } else if (tt.isDirectory())

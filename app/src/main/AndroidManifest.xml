@@ -6,9 +6,12 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.VIBRATE"
+        />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
+        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -28,7 +31,7 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".browse_liste.MainActivity"
+            android:name=".new_reader.Main_Liste"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
