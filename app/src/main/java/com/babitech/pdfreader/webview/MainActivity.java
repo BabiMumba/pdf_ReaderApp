@@ -47,7 +47,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     WebView webView;
-    private String webUrl = "https://github.com";
+    private String webUrl = "https://www.esisalama.com/assets/upload/horaire/pdf/HORAIRE%20L2_A.pdf";
     ProgressBar progressBarWeb;
     ProgressDialog progressDialog;
     RelativeLayout relativeLayout;
@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_web);
 
         webView = (WebView) findViewById(R.id.myWebView);
@@ -92,8 +91,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
-
         //Solved WebView SwipeUp Problem
         webView.getViewTreeObserver().addOnScrollChangedListener(() -> {
             if (webView.getScrollY() == 0) {
@@ -108,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 .withListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse response) {
-
 
                         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(s));
                         request.setMimeType(s3);
@@ -172,13 +168,9 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-
                 super.onProgressChanged(view, newProgress);
             }
         });
-
-
-
 
         btnNoInternetConnection.setOnClickListener(view -> checkConnection());
 
@@ -200,7 +192,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkConnection(){
-
         ConnectivityManager connectivityManager = (ConnectivityManager)
                 this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
@@ -208,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         if(wifi.isConnected()){
-            webView.loadUrl(webUrl);
+            webView.loadUrl("https://docs.google.com/gview?embedded=true&url="+webUrl);
             webView.setVisibility(View.VISIBLE);
             relativeLayout.setVisibility(View.GONE);
 
