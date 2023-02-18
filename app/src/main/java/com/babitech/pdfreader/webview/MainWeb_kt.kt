@@ -43,7 +43,9 @@ class MainWeb_kt : AppCompatActivity() {
         val window = window
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_web)
+
         webView = findViewById<View>(R.id.myWebView) as WebView
+
         progressBarWeb = findViewById<View>(R.id.progressBar) as ProgressBar
         progressDialog = ProgressDialog(this)
         progressDialog!!.setMessage("Loading Please Wait")
@@ -67,11 +69,7 @@ class MainWeb_kt : AppCompatActivity() {
 
         //Solved WebView SwipeUp Problem
         webView!!.viewTreeObserver.addOnScrollChangedListener {
-            if (webView!!.scrollY == 0) {
-                swipeRefreshLayout!!.isEnabled = true
-            } else {
-                swipeRefreshLayout!!.isEnabled = false
-            }
+            swipeRefreshLayout!!.isEnabled = webView!!.scrollY == 0
         }
         webView!!.setDownloadListener { s: String?, s1: String?, s2: String?, s3: String?, l: Long ->
             Dexter.withActivity(this@MainWeb_kt)
@@ -132,7 +130,7 @@ class MainWeb_kt : AppCompatActivity() {
                 super.onProgressChanged(view, newProgress)
             }
         }
-        btnNoInternetConnection!!.setOnClickListener { view: View? -> checkConnection() }
+        btnNoInternetConnection!!.setOnClickListener { checkConnection() }
     }
 
     override fun onBackPressed() {
@@ -142,7 +140,7 @@ class MainWeb_kt : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setMessage("Are you sure you want to Exit?")
                 .setNegativeButton("No", null)
-                .setPositiveButton("Yes") { dialogInterface: DialogInterface?, i: Int -> finishAffinity() }
+                .setPositiveButton("Yes") { _: DialogInterface?, i: Int -> finishAffinity() }
                 .show()
         }
     }
