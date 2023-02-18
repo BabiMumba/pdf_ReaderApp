@@ -16,6 +16,7 @@ import com.babitech.pdfreader.R;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public final class MainActivity extends AppCompatActivity {
 
@@ -86,5 +87,17 @@ public final class MainActivity extends AppCompatActivity {
         } else if (file.exists()) {
             Toast.makeText(getApplicationContext(), "Folder already exists!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    //Delete folders recursively
+    void deleteFolder(File dir) {
+        if (dir.isDirectory())
+            for (File subDir : Objects.requireNonNull(dir.listFiles()))
+                deleteFolder(subDir);
+        boolean succ = dir.delete();
+        if (succ) {
+            Toast.makeText(getApplicationContext(), "Folder deleted", Toast.LENGTH_SHORT).show();
+        } else
+            Toast.makeText(getApplicationContext(), "Folder could not deleted", Toast.LENGTH_SHORT).show();
     }
 }
