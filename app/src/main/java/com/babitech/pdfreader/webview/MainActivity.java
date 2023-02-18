@@ -88,8 +88,6 @@ public class MainActivity extends AppCompatActivity {
             webView.getSettings().setBuiltInZoomControls(true);
             webView.getSettings().setDomStorageEnabled(true);
             webView.getSettings().setLoadsImagesAutomatically(true);
-            webView.setScaleX(1000);
-            webView.setScaleY(1000);
 
             checkConnection();
 
